@@ -1,9 +1,7 @@
-
-
 NAME := MutableBuffer.so
 CC := gcc
-CFLAGS := -g -std=c99 -c -ISource -fpic -MMD
-LDFLAGS := -shared
+CFLAGS := -g -std=c99 -D"COMPAT53_PREFIX=LUA_COMPAT" -c -ISource -I/usr/include/luajit-2.1 -fpic -MMD
+LDFLAGS := -shared compat-5.3.o
 BUILD := Build
 SOURCE := Source
 SOURCES := $(shell find $(SOURCE) -name '*.c')

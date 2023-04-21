@@ -1,3 +1,4 @@
+#include <lua-compat-5.3/compat-5.3.h>
 #include "MutableBuffer.h"
 #include <string.h>
 #include <stdlib.h>

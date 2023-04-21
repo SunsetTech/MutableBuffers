@@ -1,10 +1,11 @@
+#include <lua-compat-5.3/compat-5.3.h>
 #include "LuaAPI.h"
 #include "MutableBuffer.h"
 #include "Class.h"
 #include <Lua_StructBind/StructBind.h>
 #include <lauxlib.h>
 
-M_Def_Lua(MutableBuffer_New) {
+M_Def_API(MutableBuffer_New) {
 	size_t InitialCapacity = 32;
 	if (!lua_isnoneornil(L,1)) {
 		InitialCapacity = luaL_checkinteger(L,1);
@@ -29,7 +30,7 @@ M_Def_Lua(MutableBuffer_New) {
 	return 1;
 }
 
-M_Def_Lua(MutableBuffer_Read) {
+M_Def_API(MutableBuffer_Read) {
 	StructBind_Userdata* Userdata = lua_touserdata(L,1);
 	MutableBuffer* Buffer = Userdata->Info.Address;
 	
@@ -50,7 +51,7 @@ M_Def_Lua(MutableBuffer_Read) {
 	return 1;
 }
 
-M_Def_Lua(MutableBuffer_Write) {
+M_Def_API(MutableBuffer_Write) {
 	StructBind_Userdata* Userdata = lua_touserdata(L,1);
 	MutableBuffer* Buffer = Userdata->Info.Address;
 	
@@ -69,14 +70,14 @@ M_Def_Lua(MutableBuffer_Write) {
 	return 2;
 }
 
-M_Def_Lua(MutableBuffer_Size) {
+M_Def_API(MutableBuffer_Size) {
 	StructBind_Userdata* Userdata = lua_touserdata(L,1);
 	MutableBuffer* Buffer = Userdata->Info.Address;
 	lua_pushinteger(L,Buffer->Size);
 	return 1;
 }
 
-M_Def_Lua(MutableBuffer_Capacity) {
+M_Def_API(MutableBuffer_Capacity) {
 	StructBind_Userdata* Userdata = lua_touserdata(L,1);
 	MutableBuffer* Buffer = Userdata->Info.Address;
 	lua_pushinteger(L,Buffer->Capacity);

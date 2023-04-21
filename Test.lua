@@ -1,5 +1,7 @@
 local MutableBuffer = require"MutableBuffer"
-
+for k,v in pairs(MutableBuffer) do
+	print(k,v)
+end
 local Buf = MutableBuffer.New()
 
 local String = "Hello"
